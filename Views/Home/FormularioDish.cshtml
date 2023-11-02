@@ -1,0 +1,47 @@
+@model Dishe
+<div class="text-center">
+    <h1 class="display-4">Add a new Dish!</h1>
+    <div><a asp-controller="Home" asp-action="VolverIndex">Home</a> | Add a Dish</div>
+</div>
+
+<form method="POST" action="/nuevo/dish" class="form-dish">
+    <div class="cuadrodish">
+        <div>
+            <label asp-for="Chef">Chef's Name:</label>
+            <input type="text" asp-for="Chef">
+            <span asp-validation-for="Chef"></span>
+        </div>
+        <div>
+            <label asp-for="Name">Name of Dish:</label>
+            <input type="text" asp-for="Name">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="Calories"># of Calories:</label>
+            <input type="number" asp-for="Calories">
+        </div>
+    </div>
+
+    <div class="cuadrodish">
+        <label asp-for="Tastiness">Tastiness:</label>
+        <select name="Tastiness" id="Tastiness" asp-for="Tastiness">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    
+    <div class="cuadrodish">
+        <div>
+            <label asp-for="Description">Description:</label>
+            <textarea asp-for="Description"></textarea>
+        </div>
+        <div>
+            <input type="hidden" asp-for="Id">
+        </div>
+        <button>Add Dish</button>
+    </div>
+    
+</form>
