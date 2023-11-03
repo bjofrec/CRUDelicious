@@ -27,3 +27,14 @@ body {
   margin-right: 200px;
 
 }
+
+.btn-delete{
+  background-color: red;
+  margin-right: 200px;
+}
+.btn-edit{
+  background-color: blue;
+}
+.divbtn{
+  display: flex;
+}

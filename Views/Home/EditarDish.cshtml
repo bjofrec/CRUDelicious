@@ -1,10 +1,11 @@
 @model Dishe
-<div class="text-center">
-    <h1 class="display-4">Add a new Dish!</h1>
-    <div><a asp-controller="Home" asp-action="VolverIndex">Home</a> | Add a Dish</div>
-</div>
 
-<form method="POST" asp-action="AgregarDish" asp-controller="Home" class="form-dish">
+<div class="text-center">
+    <h1 class="display-4">Edit @Model.Name</h1>
+    <div><a asp-controller="Home" asp-action="VolverIndex">Home</a> | <a asp-controller="Home" asp-action="FormularioDish">Add a Dish</a></div>
+</div>
+<form method="POST" action="/actualiza/dish/@Model.Id" class="form-dish">
+<!--<form method="POST" asp-action="ActualizaDish" asp-controller="Home" class="form-dish" asp-route-dish_id = "@Model.Id">-->
     <div class="cuadrodish">
         <div>
             <label asp-for="@Model.Chef">Chef's Name:</label>

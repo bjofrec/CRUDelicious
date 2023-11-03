@@ -63,6 +63,54 @@ public class HomeController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpGet]
+    [Route("dish/edit/{id_dish}")]
+    public IActionResult FormularioEditarDish(int id_dish){
+
+        Dishe? dish = _context.Dishes.FirstOrDefault(i => i.Id == id_dish);
+        return View("FormularioEditarDish", dish);  
+    }
+    [HttpGet]
+    [Route("edit/{id_dish}")]
+    public IActionResult EditarDish(int id_dish){
+        Dishe? dish = _context.Dishes.FirstOrDefault(edit => edit.Id == id_dish);
+        return View("EditarDish", dish);
+    }
+
+    [HttpPost]
+    [Route("actualiza/dish/{id_dish}")]
+
+    public IActionResult ActualizaDish(Dishe dish, int id_dish){
+        Dishe? dishPrevia = _context.Dishes.FirstOrDefault(i => i.Id == id_dish);
+        if(ModelState.IsValid){
+            
+
+            dishPrevia.Name = dish.Name;
+            dishPrevia.Chef = dish.Chef;
+            dishPrevia.Calories = dish.Calories;
+            dishPrevia.Tastiness = dish.Tastiness;
+            dishPrevia.Description = dish.Description;
+            //dishPrevia.Fecha_Actualizacion = DateTime.Now;
+            _context.SaveChanges();
+            return RedirectToAction ("Index");
+        }   
+        return View("EditarDish", dishPrevia);
+
+
+    }
+
+    [HttpPost]
+    [Route("elimina/dish/{id_dish}")]
+    public IActionResult EliminaDish(int id_dish){
+        Dishe? dish = _context.Dishes.FirstOrDefault(i => i.Id == id_dish);
+        _context.Dishes.Remove(dish);
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+
+    }
+
+
+
     /*public IActionResult Privacy()
     {
         return View();

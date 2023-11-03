@@ -13,7 +13,7 @@
     <tbody>
         @foreach(Dishe dish in @Model){
             <tr>
-                <td>by @dish.Name</td>
+                <td><a asp-action="FormularioEditarDish" asp-controller="Home" asp-route-id_dish="@dish.Id">@dish.Name</a></td>
                 <td>by @dish.Chef</td>
             </tr>
         }
